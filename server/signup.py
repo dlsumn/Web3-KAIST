@@ -1,6 +1,7 @@
 
 from flask import Blueprint, render_template, request, flash, url_for
 import sqlite3
+from web3 import Web3, HTTPProvider
 
 signup_bp = Blueprint('signup', __name__)
 profile_bp = Blueprint('profile', __name__)
@@ -17,9 +18,15 @@ def signup():
             return render_template('signup.html')
         
         try:
+            # Geth와 연결
+            w3 = Web3(HTTPProvider('http://localhost:8545'))
+
+            # 새로운 계정 생성
+            account = w3.eth.account.create()
+
             conn = sqlite3.connect('database.db')
             c = conn.cursor()
-            c.execute('''INSERT INTO users (username, password) VALUES (?, ?)''', (username, password))
+            c.execute('''INSERT INTO users (username, password, address, private_key) VALUES (?, ?, ?, ?)''', (username, password, account.address, account.key.hex()))
             conn.commit()
             flash('회원가입이 완료되었습니다.')
             return render_template('signup.html')
@@ -36,7 +43,7 @@ def signup():
 def profile(username):
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
-    c.execute("SELECT username, password FROM users WHERE username=?", (username,))
-    user = dict(zip(('username', 'password'), c.fetchone()))
+    c.execute("SELECT username, address FROM users WHERE username=?", (username,))
+    user = dict(zip(('username', 'address'), c.fetchone()))
     conn.close()
     return render_template('my_profile.html', user=user)
