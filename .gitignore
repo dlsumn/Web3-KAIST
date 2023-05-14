@@ -1,2 +1,4 @@
 ethereum/
 __pycache__/
+database.db
+server/database.db

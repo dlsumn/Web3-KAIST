@@ -32,11 +32,11 @@ def signup():
     
     return render_template('signup.html', action=url_for('signup.signup'))
 
-@profile_bp.route('/profile')
-def profile():
+@profile_bp.route('/profile/<username>')
+def profile(username):
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
-    c.execute("SELECT username FROM users")
-    user = c.fetchone()
+    c.execute("SELECT username, password FROM users WHERE username=?", (username,))
+    user = dict(zip(('username', 'password'), c.fetchone()))
     conn.close()
     return render_template('my_profile.html', user=user)
