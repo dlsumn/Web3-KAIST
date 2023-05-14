@@ -41,9 +41,14 @@ def signup():
 
 @profile_bp.route('/profile/<username>')
 def profile(username):
+    w3 = Web3(HTTPProvider('http://localhost:8545'))
+
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
     c.execute("SELECT username, address FROM users WHERE username=?", (username,))
-    user = dict(zip(('username', 'address'), c.fetchone()))
+    username, address = c.fetchone()
+    balance = w3.eth.get_balance(address)
+
+    user = dict(zip(('username', 'address', 'balance'), (username, address, balance)))
     conn.close()
     return render_template('my_profile.html', user=user)
