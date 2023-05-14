@@ -22,7 +22,8 @@ def init_db():
                  (id INTEGER PRIMARY KEY AUTOINCREMENT,
                  username TEXT NOT NULL,
                  password TEXT NOT NULL,
-                 wallet TEXT NOT NULL)''')
+                 address TEXT,
+                 private_key TEXT)''')
     conn.commit()
     conn.close()
 

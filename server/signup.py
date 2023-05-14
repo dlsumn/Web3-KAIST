@@ -36,7 +36,7 @@ def signup():
 def profile():
     conn = sqlite3.connect('database.db')
     c = conn.cursor()
-    c.execute("SELECT username, password FROM users")
+    c.execute("SELECT username FROM users")
     user = c.fetchone()
     conn.close()
     return render_template('my_profile.html', user=user)
