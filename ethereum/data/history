@@ -1,0 +1,7 @@
+ls
+help
+d
+eth
+eth.chainId()
+eth.accounts
+exit()
