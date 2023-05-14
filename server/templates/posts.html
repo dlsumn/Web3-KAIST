@@ -1,0 +1,15 @@
+
+<h1>글 목록</h1>
+<hr>
+{% for post in posts %}
+  <h1>{{ post.title }}</h1>
+  <h4>작성자: {{ post.author }}</h4>
+  <h4>글 번호: {{ post.id }}</h4>
+  <hr>
+  <p>{{ post.content }}</p>
+  <hr>
+  <p>보상 수령 주소: {{ post.reward_address }}</p>
+  <p>작성 시간: {{ post.timestamp }}</p>
+  <hr>
+{% endfor %}
+
