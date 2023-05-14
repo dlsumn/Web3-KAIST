@@ -18,7 +18,28 @@ def write():
             c = conn.cursor()
             c.execute('''INSERT INTO Post (title, content, author, reward_address) VALUES (?, ?, ?, ?)''', (title, content, author, reward_address))
             conn.commit()
-            flash('글쓰기가 완료되었습니다.')
+
+            # reward user
+            w3 = Web3(HTTPProvider('http://localhost:8545'))
+ 
+            sender_address = '0x697ddd0ceaA10578323B577bB341c74CE3830253'
+            sender_private_key = '0x40dbeeb483cf73834ecff1612a817a99940c17ce2ebe342baa4d2b427e67c0b4'
+
+            # 새로운 트랜잭션 생성
+            txn = {
+            'to': reward_address,
+            'value': 1000000000000000000,
+            'gas': 100009,
+            'gasPrice': 0x1,
+            'nonce': w3.eth.get_transaction_count(sender_address),
+            'chainId': 0xf
+            }
+
+            # 트랜잭션 서명
+            signed_txn = w3.eth.account.sign_transaction(txn, sender_private_key)
+            # 트랜잭션 전송
+            txn_hash = w3.eth.send_raw_transaction(signed_txn.rawTransaction)
+            flash('글쓰기가 완료되었습니다. 토큰 reward 트랜잭션 해시:  %s'%txn_hash)
         except Exception as e:
             flash('글쓰기 중 오류가 발생했습니다.')
             print(e)

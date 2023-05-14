@@ -1,7 +1,8 @@
-ls
-help
-d
-eth
-eth.chainId()
-eth.accounts
-exit()
+
+web3.eth.pendingTransactions
+minor.start()
+miner.start()
+miner.setEtherbase('0x697ddd0ceaa10578323b577bb341c74ce3830253')
+miner.start()
+web3.eth.pendingTransactions
+miner.start()
