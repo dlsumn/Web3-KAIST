@@ -1,18 +1,79 @@
 <!DOCTYPE html>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;500;900&display=swap" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+
+    <style>
+      *{
+        font-family: 'Noto Sans KR', sans-serif;
+      }
+      body {background-color: #e9ecef;}
+    </style> 
   </head>
   <body>
-    <h1>Welcome to My App</h1>
-    <a href="{{ url_for('signup.signup') }}">Signup</a>
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/index">JobPlanet</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/index">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('signup.signup') }}">Sign Up</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/profile">Profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/write">Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/read">Review Board</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="mainscreen">
+      <div class="container card w-50">
+        <div class="row">
+          <div class="col">
+            <div class="text-center">
+              <br>
+              <h1>JobPlanet</h1>
+                <br>
+                <h5>Transparency, trust, and excellence - all through blockchain reviews.</h5>
+                <br>
+              <br>
+              <p><a class="btn btn-lg btn-primary" href="/signup">Sign up today</a></p>
+            </div>
+          </div>
+        </div>            
+      </div><!-- /.container -->
+    </main>
     <br>
-    <a href="/profile">Profile</a>
     <br>
-    <a href="/write">Post</a>
-    <br>
-    <a href="/read">Read Posts</a>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js" integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js" integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
 
