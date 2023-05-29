@@ -2,7 +2,7 @@
 
 ## Server Info
 
-43.200.180.208
+server: http://15.164.169.234:5000/
 
 <img width="457" alt="image" src="https://github.com/dlsumn/Web3-KAIST/assets/22411406/7cd2d02e-2df3-493c-bb39-e39b40579165">
 
